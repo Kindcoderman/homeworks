@@ -1,18 +1,21 @@
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 primes = []
 not_primes = []
+is_prime = True
 
 for i in numbers:
-    perebor = int((i ** 0.5) + 1)
-    counter = 0
-    for j in range(1, (i + 1)):
+    if i == 1:
+        continue
+    for j in range(2, i):
         if i % j == 0:
-            counter += 1
+            is_prime = False
+            break
+        elif i % j != 0:
+            is_prime = True
 
-    if counter == 2:
+    if is_prime and i != 1:
         primes.append(i)
-    elif counter >= 3:
+    else:
         not_primes.append(i)
-
 print('Primes:', primes)
 print('Not Primes:', not_primes)
